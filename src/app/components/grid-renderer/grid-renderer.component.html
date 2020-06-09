@@ -1,0 +1,51 @@
+<mat-toolbar style="margin-bottom: 20px;" >
+    <!-- <section class="configuration-section">
+        <mat-slider
+            [(ngModel)]="offsetIncrementor"
+            (change)="renderGrids()"
+            [max]="200"
+            [min]="0"
+            >
+        </mat-slider
+        >
+    </section> -->
+    <div *ngIf="!connectionIsClosed">
+        <button mat-button color="warn" (click)="closeServerConnection()">
+            Close streaming connection
+        </button>
+        <button mat-button color="primary" (click)="saveSettings()">
+            Save settings
+        </button>
+    </div>
+
+    <div *ngIf="connectionIsClosed">
+        <button mat-button color="primary" (click)="openConnection()">
+            Open streaming connection
+        </button>
+    </div>
+
+    <div *ngIf="!lightbarsOn && !connectionIsClosed">
+        <button mat-button color="primary" (click)="enableLightbars()">
+            Turn all lightbars on
+        </button>
+    </div>
+    <div *ngIf="lightbarsOn">
+        <button mat-button color="warn" (click)="disableLightbars()">
+            Turn all lightbars off
+        </button>
+    </div>
+
+</mat-toolbar>
+<div #gridContainer>
+    <canvas id="fluidSim"></canvas>
+    <!-- <canvas id="demo"></canvas> -->
+</div>
+
+
+<div style="margin-top: 20px;" *ngIf="hasIncomingData">
+    <!-- <button class="clear" (click)="leapDataService.clear()">clear</button>
+        <div *ngFor="let message of leapDataService.messages"> 
+            {{message.x}} {{message.y}}
+        </div> -->
+    <p>Connection is open</p>
+</div>

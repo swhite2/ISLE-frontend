@@ -1,0 +1,11 @@
+.configuration-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+#demo {
+    z-index: -1;
+    position: absolute;
+}
